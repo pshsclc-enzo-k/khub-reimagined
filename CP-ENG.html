@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en-us">
+ <head>
+	<title>Course: English 3</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Load an icon library -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600&amp;family=Ubuntu:wght@300;500&amp;display=swap" rel="stylesheet">
+        <link rel="icon" href="https://cmc.pshs.edu.ph/images/logo-trans.png" type="image/gif" sizes="16x16">
+<style>
+            
+            body {
+                font-family: 'Ubuntu', sans-serif; 
+                background-color:#EBF2FA;
+                color:#231F20;
+                height: 100vh;
+                overflow-x: hidden;
+                padding-top: 55px;
+            }
+            
+            .navbar a {
+                float: left;
+                text-align: center;
+                padding: 10px;
+                color: #05668D;
+                text-decoration: none;
+                font-size: 25px;
+		    }
+            
+		    .navbar a:hover {
+		        color: #EBF2FA;
+		    }
+
+            .sidebar, .dropdown-item, .dropdown-menu {
+                background-color: #14213d;
+            }
+
+            .dropdown a, .sidebar a {
+                color: white;
+            }
+
+            .w-sidebar {
+                width: 300px;
+                max-width: 300px;
+            }
+
+            .row.collapse {
+                margin-left: -300px;
+                left: 0;
+                transition: margin-left .15s linear;
+            }
+
+            .row.collapse.show {
+                margin-left: 0 !important;
+            }
+
+            .row.collapsing {
+                margin-left: -200px;
+                left: -0.05%;
+                transition: all .15s linear;
+            }
+
+            .vh-100 {
+                min-height: 100vh;
+            }
+
+            @media (max-width:768px) {
+
+                .navbar-brand {
+                    display: none;
+                }
+
+                .navbar {
+                    height: 71px;
+                }
+
+                .row.collapse,
+                .row.collapsing {
+                    margin-left: 0 !important;
+                    left: 0 !important;
+                    overflow: visible;
+                }
+
+                .row > .sidebar.collapse {
+                    display: flex !important;
+                    margin-left: -100% !important;
+                    transition: all .3s linear;
+                    position: fixed;
+                    z-index: 1050;
+                    max-width: 0;
+                    min-width: 0;
+                    flex-basis: auto;
+                }
+
+                .row > .sidebar.collapse.show {
+                    margin-left: 0 !important;
+                    width: 50%;
+                    max-width: 100%;
+                    min-width: initial;
+                }
+
+                .row > .sidebar.collapsing {
+                    display: flex !important;
+                    margin-left: -10% !important;
+                    transition: all .2s linear !important;
+                    position: fixed;
+                    z-index: 1050;
+                    min-width: initial;
+                }
+            }
+			.subject {
+			width: 100%;
+			padding: 20px;
+			background-color: #E5E5E5;
+			color: black;
+			font-family: 'Ubuntu';
+		}
+		
+		.accordion {
+			background-color: #FCA311;
+			color: black;
+			cursor: pointer;
+			padding: 18px;
+			width: 100%;
+			border: none;
+			text-align: left;
+			outline: none;
+			font-size: 15px;
+			transition: 0.4s;
+			font-family: 'Ubuntu';
+		}
+		
+		.active, .accordion:hover {
+			background-color: #FBC02D;
+		}
+		
+		.accordion.active:after {
+			content: "\2212";
+		}
+
+		.accordion:after {
+			content: '\002B';
+			color: black;
+			font-weight: bold;
+			float: right;
+			margin-left: 5px;
+		}
+
+		.panel {
+			padding: 0 18px;
+			background-color: #EBF2FA;
+			max-height: 0;
+			overflow: hidden;
+			transition: max-height 0.2s ease-out;
+		}
+		
+		a{
+			color: black;
+		}
+		
+		a:hover{
+			text-decoration: none;
+			color:#FCA311;
+		}
+        </style>
+    </head>
+	<body>
+        <nav class="navbar navbar-expand navbar-light fixed-top" style="background-color:#FCA311">
+            <a data-toggle="collapse" href="#" data-target=".collapse" role="button" class="p-2 pr-3" aria-expanded="true">
+                <i class="fa fa-bars fa-lg"></i>
+            </a>
+            <a class="navbar-brand float-left" href="dashboard.html">
+                <img src="https://khub.clc.pshs.edu.ph/pluginfile.php/1/theme_moove/logo/1642486390/khub_header.png" alt="Logo" style="width:250px;">
+            </a>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                <a href="#"><i class="fa fa-fw fa-bell"></i></a>
+                </li>
+                <li class="nav-item">
+                <a href="authorpage.html"><i class="fa fa-fw fa-user"></i></a>
+                </li>
+            </ul>
+        </nav>
+        <div class="container-fluid px-0 h-100">
+            <div class="row vh-100 no-gutters d-flex h-100 position-relative collapse show">
+                <div class="col-3 p-0 mt-3 mt-lg-4 vh-100 h-100 w-sidebar navbar-collapse d-none d-md-flex sidebar collapse">
+                    <div class="sidebar position-fixed text-white h-100 w-sidebar pl-2">
+                        <div class="px-3 py-4 my-3">
+                            <h1>STUDENT INFO</h1>
+                            <img src="default-user.png" alt="default user image" class="rounded-circle mt-1 pt-3" style="width: 30%; height: 30%;">
+                            <h5 class="mt-3 mb-0">Juan Dela Cruz</h5>
+                            <h5 class="mt-2 mb-0">9 - Balingkilat</h5>
+                        </div>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="dashboard.html">Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Calendar</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Private Files</a>
+                            </li>
+                            <li class="dropdown show">
+                                <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
+                                  My courses
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                  <a class="dropdown-item" href="CP-BIO.html">Biology 1 - 9-Balingkilat</a>
+                                  <a class="dropdown-item" href="CP-CS.html">Computer Science 3 - 9-Balingkilat</a>
+                                  <a class="dropdown-item" href="CP-ENG.html">English 3 - 9-Balingkilat</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col p-3 mt-4">
+		<div class="subject">
+			<h2>English 3</h2>
+		</div>
+		<div id="FirstQuarter" class="tabcontent">
+			<h3>First Quarter</h3>
+				<button class="accordion">Week 1</button>
+				<div class="panel">
+					<p>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=35045"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;SLG 1.1 Functional Listening</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=35046"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;SLG 1.2 Functional Speaking</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=35047"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;SLG 1.3 Presentation Skills</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=35421"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;SLG 1.4 Home Reading Assignment and Graded Formative Assessment</i></a>
+					</p>
+				</div>
+				<button class="accordion">Week 2</button>
+				<div class="panel">
+					<p>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=36065"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;SLG 2.1 Components of a Paragraph</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=36066"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;SLG 2.2 Unity, Coherence, Emphasis</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=36067"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;SLG 2.3 Writing a Good Paragraph</i></a>
+					</p>
+				</div>
+				<button class="accordion">Week 3</button>
+				<div class="panel">
+					<p>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=36592"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;Beowulf (Chapters 12-14)</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=36823"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;SLG 3.1 Old English and the Epic</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=36824"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;SLG 3.2 Beowulf Fights with Grendel</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=36825"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;SLG 3.3 Archetypal Analysis</i></a>
+					</p>
+				</div>
+				<button class="accordion">Week 4</button>
+				<div class="panel">
+					<p>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=37629"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;Summary of Selected Tales</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=37562"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;SLG 4.1 Medieval England and Metrical Romance</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=37563"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;SLG 4.2 The Canterbury Tales</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=37564"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;SLG 4.3 SIFT Analysis</i></a>
+					</p>
+				</div>
+				<button class="accordion">Week 5</button>
+				<div class="panel">
+					<p>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=36594"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;Marlowe and Raleigh Poems</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=37973"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;SLG 5.1 Elizabethan Period and Pastoral Poems</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=37974"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;SLG 5.2 The Passionate Shepherd to His Love</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=37975"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;SLG 5.3 The Nymph's Reply to the Shepherd</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=37976"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;SLG 5.4 A Comparative Analysis of the Poems</i></a>
+					</p>
+				</div>
+				<button class="accordion">Week 6</button>
+				<div class="panel">
+					<p>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=36595"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;A Modest Proposal by Jonathan Swift</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=38458"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;SLG 6.1 The Puritan Period and the Age of Classicism</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=38459"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;SLG 6.2 A Modest Proposal</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=38460"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;SLG 6.3 Satirical Elements</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=38457"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;SLG 6.4 Writing a Satirical Essay</i></a>
+					</p>
+				</div>
+				<button class="accordion">Quarter 1 Project</button>
+				<div class="panel">
+					<p>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=35651"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;Rubric for Satirical Essay Writing</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=35826"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;Literary Circle Grouping</i></a>
+					</p>
+				</div>
+				<h3><a href="grades_eng.html"><i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;Grades</a></h3>
+		</div>
+		<div id="SecondQuarter" class="tabcontent">
+			<h3>Second Quarter</h3>
+				<button class="accordion">Week 1 & 2</button>
+				<div class="panel">
+					<p>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=40345"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;SLG 1.1 Organizing Information Using Outlines</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=40344"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;SLG 1.2 Organizing Information Using Ordering Strategies</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=40346"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;SLG 1.3 Language and Style in Academic Writing</i></a>
+					</p>
+				</div>
+				<button class="accordion">Week 3</button>
+				<div class="panel">
+					<p>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=42456"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;I Wandered Lonely as a Cloud Literary Text (With Guide Questions and Introductory Lecture Video)</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=40349"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;SLG 2.1 Romantic Age and Poetry</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=40348"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;SLG 2.2 I Wandered Lonely as a Cloud by William Wordsworth</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=40347"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;SLG 2.3 Poetic Elements Analysis</i></a>
+					</p>
+				</div>
+				<button class="accordion">Week 4 & 5</button>
+				<div class="panel">
+					<p>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=41355"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;Sonnets from the Portuguese 43 Literary Text</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=40350"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;SLG 3.1 The Victorian Period and Sonnets</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=40351"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;SLG 3.2 Sonnets from the Portuguese by Elizabeth Barrett Browning</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=40352"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;SLG 3.3 Sonnet Analysis</i></a>
+					</p>
+				</div>
+				<button class="accordion">Week 6 & 7</button>
+				<div class="panel">
+					<p>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=41356"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;Invictus Literary Text</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=41357"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;Time and the Machine Literary Text</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=40353"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;SLG 4.1 The Twentieth Century</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=40355"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;SLG 4.2 Invictus by William Ernest Henley</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=40354"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;SLG 4.3 Time and the Machine by Aldous Huxley</i></a>
+					</p>
+				</div>
+				<button class="accordion">Quarter 2 Project</button>
+				<div class="panel">
+					<p>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=42595"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;Groupings in English 3 Quarter Project 2</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=41945"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;Rubric for Writing Academic Texts</i></a><br>
+					</p>
+				</div>
+		</div>
+		<div id="ThirdQuarter" class="tabcontent">
+			<h3>Third Quarter</h3>
+				<button class="accordion">Week 1</button>
+				<div class="panel">
+					<p>NOT YET AVAILABLE</p>
+				</div>
+				<button class="accordion">Week 2</button>
+				<div class="panel">
+					<p>NOT YET AVAILABLE</p>
+				</div>
+				<button class="accordion">Week 3</button>
+				<div class="panel">
+					<p>NOT YET AVAILABLE</p>
+				</div>
+				<button class="accordion">Week 4</button>
+				<div class="panel">
+					<p>NOT YET AVAILABLE</p>
+				</div>
+				<button class="accordion">Week 5</button>
+				<div class="panel">
+					<p>NOT YET AVAILABLE</p>
+				</div>
+				<button class="accordion">Week 6</button>
+				<div class="panel">
+					<p>NOT YET AVAILABLE</p>
+				</div>
+		</div>
+		<div id="FourthQuarter" class="tabcontent">
+			<h3>Fourth Quarter</h3>
+				<button class="accordion">Week 1</button>
+				<div class="panel">
+					<p>NOT YET AVAILABLE</p>
+				</div>
+				<button class="accordion">Week 2</button>
+				<div class="panel">
+					<p>NOT YET AVAILABLE</p>
+				</div>
+				<button class="accordion">Week 3</button>
+				<div class="panel">
+					<p>NOT YET AVAILABLE</p>
+				</div>
+				<button class="accordion">Week 4</button>
+				<div class="panel">
+					<p>NOT YET AVAILABLE</p>
+				</div>
+				<button class="accordion">Week 5</button>
+				<div class="panel">
+					<p>NOT YET AVAILABLE</p>
+				</div>
+				<button class="accordion">Week 6</button>
+				<div class="panel">
+					<p>NOT YET AVAILABLE</p>
+				</div>
+		</div>
+         </div></div></div>
+            <script>
+		var acc = document.getElementsByClassName("accordion");
+		for (let i = 0; i < acc.length; i++) {
+		acc[i].addEventListener("click", function() {
+		for (let j = 0; j < acc.length; j++) {
+		acc[j].classList.remove("active");
+		if(j!=i){
+        acc[j].nextElementSibling.style.maxHeight = null;
+		}
+		}
+		this.classList.add("active");
+		var panel = this.nextElementSibling;
+		if (panel.style.maxHeight){
+		panel.style.maxHeight = null;
+		} else {
+		panel.style.maxHeight = panel.scrollHeight + "px";
+		}
+		});
+		}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head> 
+	<title>Grades: View</title>
+        <!-- meta viewport tag + other bootstrap links -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Load an icon library -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600&amp;family=Ubuntu:wght@300;500&amp;display=swap" rel="stylesheet">
+        <link rel="icon" href="https://cmc.pshs.edu.ph/images/logo-trans.png" type="image/gif" sizes="16x16">
+        <!-- 
+            CSS rules to specify families
+            
+            font-family: 'Rubik', sans-serif;
+            font-family: 'Ubuntu', sans-serif; 
+        -->  
+        <!-- carousel interval when switching to next slide -->
+        <script>
+            $('.carousel').carousel({
+                interval: 3000,
+                keyboard: false,
+                ride: carousel
+            })
+        </script>
+
+<style>
+            
+            body {
+                font-family: 'Ubuntu', sans-serif; 
+                background-color:#EBF2FA;
+                color:#231F20;
+                height: 100vh;
+                overflow-x: hidden;
+                padding-top: 55px;
+            }
+            
+            .navbar a {
+                float: left;
+                text-align: center;
+                padding: 10px;
+                color: #05668D;
+                text-decoration: none;
+                font-size: 25px;
+		    }
+            
+		    .navbar a:hover {
+		        color: #EBF2FA;
+		    }
+            /* sidebar and sidebar collapse animation */
+
+            .sidebar, .dropdown-item, .dropdown-menu {
+                background-color: #14213d;
+            }
+
+            .dropdown a, .sidebar a {
+                color: white;
+            }
+
+            .w-sidebar {
+                width: 300px;
+                max-width: 300px;
+            }
+
+            .row.collapse {
+                margin-left: -300px;
+                left: 0;
+                transition: margin-left .15s linear;
+            }
+
+            .row.collapse.show {
+                margin-left: 0 !important;
+            }
+
+            .row.collapsing {
+                margin-left: -200px;
+                left: -0.05%;
+                transition: all .15s linear;
+            }
+
+            .vh-100 {
+                min-height: 100vh;
+            }
+
+            @media (max-width:768px) {
+
+                .navbar-brand {
+                    display: none;
+                }
+
+                .navbar {
+                    height: 71px;
+                }
+
+                .row.collapse,
+                .row.collapsing {
+                    margin-left: 0 !important;
+                    left: 0 !important;
+                    overflow: visible;
+                }
+
+                .row > .sidebar.collapse {
+                    display: flex !important;
+                    margin-left: -100% !important;
+                    transition: all .3s linear;
+                    position: fixed;
+                    z-index: 1050;
+                    max-width: 0;
+                    min-width: 0;
+                    flex-basis: auto;
+                }
+
+                .row > .sidebar.collapse.show {
+                    margin-left: 0 !important;
+                    width: 50%;
+                    max-width: 100%;
+                    min-width: initial;
+                }
+
+                .row > .sidebar.collapsing {
+                    display: flex !important;
+                    margin-left: -10% !important;
+                    transition: all .2s linear !important;
+                    position: fixed;
+                    z-index: 1050;
+                    min-width: initial;
+                }	
+            }
+			
+			li, h2, h3{
+			  color: #427AA1;
+			  font-family: 'Ubuntu', sans-serif;
+			}
+			
+			h1{
+			  color: #EBF2FA;
+			  font-family: 'Ubuntu', sans-serif;
+			  font-weight:bold;
+			}
+        </style>
+    </head>
+	<body>
+        <nav class="navbar navbar-expand navbar-light fixed-top" style="background-color:#FCA311">
+            <a data-toggle="collapse" href="#" data-target=".collapse" role="button" class="p-2 pr-3" aria-expanded="true">
+                <i class="fa fa-bars fa-lg"></i>
+            </a>
+            <a class="navbar-brand float-left" href="dashboard.html">
+                <img src="https://khub.clc.pshs.edu.ph/pluginfile.php/1/theme_moove/logo/1642486390/khub_header.png" alt="Logo" style="width:250px;">
+            </a>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                <a href="#"><i class="fa fa-fw fa-bell"></i></a>
+                </li>
+                <li class="nav-item">
+                <a href="authorpage.html"><i class="fa fa-fw fa-user"></i></a>
+                </li>
+            </ul>
+        </nav>
+        <div class="container-fluid px-0 h-100">
+            <div class="row vh-100 no-gutters d-flex h-100 position-relative collapse show">
+                <div class="col-3 p-0 mt-3 mt-lg-4 vh-100 h-100 w-sidebar navbar-collapse d-none d-md-flex sidebar collapse">
+                    <div class="sidebar position-fixed text-white h-100 w-sidebar pl-2">
+                        <div class="px-3 py-4 my-3">
+                            <h1>STUDENT INFO</h1>
+                            <img src="default-user.png" alt="default user image" class="rounded-circle mt-1 pt-3" style="width: 30%; height: 30%;">
+                            <h5 class="mt-3 mb-0">Juan Dela Cruz</h5>
+                            <h5 class="mt-2 mb-0">9 - Balingkilat</h5>
+                        </div>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="dashboard.html">Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Calendar</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Private Files</a>
+                            </li>
+                            <li class="dropdown show">
+                                <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
+                                  My courses
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                  <a class="dropdown-item" href="CP-BIO.html">Biology 1 - 9-Balingkilat</a>
+                                  <a class="dropdown-item" href="CP-CS.html">Computer Science 3 - 9-Balingkilat</a>
+                                  <a class="dropdown-item" href="CP-ENG.html">English 3 - 9-Balingkilat</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col p-3 mt-4">
+                    <div class="card">
+					  <div class="card-header text-center" style="background-color:#05668D">
+					  <h1>FINAL GRADE: ENGLISH</h1>
+					  </div>
+					  <div class="card-body text-center" style="background-color:#EBF2FA">
+					  <h2>GWA:<code style="color:#FCA311"> 1.25</code> <br> Percentage:<code style="color:#FCA311"> 95%</code></h2>
+					  </div>
+					  <div class="card-footer text-center" style="background-color:#05668D">
+					  <h1>SUMMARY OF GRADES: ENGLISH</h1>
+					  </div>
+					</div>
+					<div class="container-fluid-xl" style="padding-top:10px;">
+						<div class="row text-center" style="width:100%; padding:0px; margin:0px;">
+		  <div class="col-xl-4">
+			<div class="dropdown">
+			  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="color:#EBF2FA; background-color:#FCA311">
+				Quarter:
+			  </button>
+			  <div class="dropdown-menu">
+				<a class="dropdown-item" href="#">Q1</a>
+				<a class="dropdown-item" href="#">Q2</a>
+				<a class="dropdown-item" href="#">Q3</a>
+				<a class="dropdown-item" href="#">Q4</a>
+			  </div>
+			<article>
+				<h2>Formative Assessments <code style="color:red">(25%)</code></h2>
+				<hr>
+				<ul style="list-style-type: none; font-size:40px; padding:20px;">
+					<li>FA #1 ----- <code style="color:red">13</code>/15</li>
+					<li>FA #2 ----- <code style="color:red">18</code>/20</li>
+					<li>FA #3 ----- <code style="color:red">14</code>/15</li>
+					<li>FA #4 ----- <code style="color:red">10</code>/10</li>
+					<li>FA #5 ----- <code style="color:red">10</code>/10</li>
+				</ul>
+				<h3>Total percentage: <code style="color:red">23%</code></h3>
+				<hr>
+			 </article>
+			</div>
+		  </div>
+		  <div class="col-xl-4">
+			<div class="dropdown">
+			  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="color:#EBF2FA; background-color:#FCA311">
+				Quarter:
+			  </button>
+			  <div class="dropdown-menu">
+				<a class="dropdown-item" href="#">Q1</a>
+				<a class="dropdown-item" href="#">Q2</a>
+				<a class="dropdown-item" href="#">Q3</a>
+				<a class="dropdown-item" href="#">Q4</a>
+			  </div>
+			<article>
+				<h2>Alternative Assessments <code style="color:red">(40%)</code></h2>
+				<hr>
+				<ul class="text-center" style="list-style-type: none; font-size:40px; padding:20px;">
+					<li>Project ----- <code style="color:red">100</code>/100</li>
+				</ul>
+				<h3>Total percentage: <code style="color:red">40%</code></h3>
+				<hr>
+			 </article>
+			</div>
+		  </div>
+		  <div class="col-xl-4">
+			<div class="dropdown">
+			  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="color:#EBF2FA; background-color:#FCA311">
+				Quarter:
+			  </button>
+			  <div class="dropdown-menu">
+				<a class="dropdown-item" href="#">Q1</a>
+				<a class="dropdown-item" href="#">Q2</a>
+				<a class="dropdown-item" href="#">Q3</a>
+				<a class="dropdown-item" href="#">Q4</a>
+			  </div>
+			<article>
+				<h2>Summative Assessments <code style="color:red">(35%)</code></h2>
+				<hr>
+				<ul class="text-center" style="list-style-type: none; font-size:40px; padding:20px;">
+					<li>Exam ----- <code style="color:red">46</code>/50</li>
+				</ul>
+				<h3>Total percentage: <code style="color:red">32%</code></h3>	<hr>			
+			 </article>
+			</div>
+		  </div>
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>
+	</body>
+</html>

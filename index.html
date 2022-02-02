@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <title>PSHS Knowledge Hub - CLC: Log in to the site</title>
+        <!-- meta viewport tag + other bootstrap links -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Load an icon library -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600&family=Ubuntu:wght@300;500&display=swap" rel="stylesheet">
+        <link rel="icon" href="https://cmc.pshs.edu.ph/images/logo-trans.png" type="image/gif" sizes="16x16">
+        <!-- 
+            CSS rules to specify families
+        
+            font-family: 'Rubik', sans-serif;
+            font-family: 'Ubuntu', sans-serif; 
+        --> 
+        
+        <style>
+        
+            body {
+                font-family: 'Ubuntu', sans-serif; 
+                background-color:#14213d;
+                color:#231F20;
+            }
+    
+            img {
+                max-width: 100%;
+                height: auto;
+                width: auto;
+            }
+            
+            .jumbotron {
+                background-color: transparent !important;
+                margin-bottom: -500px;
+                z-index: -1;
+            }
+    
+            .container-fluid {
+                width: 80%;
+                overflow: hidden;
+            }
+    
+            .announce {
+                background-color:#ebf2fa;
+            }
+            
+            .EoA {
+                background-color:#ebf2fa;
+            }
+    
+            .EoA2 {
+                background-color:#ebf2fa;
+            }
+    
+            .access {
+                background-color:#ebf2fa;
+                height: auto;
+            }
+    
+            .border {
+                border-width: 8px !important;
+                border-color: #fca311 !important;
+            }
+    
+            .lg {
+                border: none;
+                background-color: #fca311;
+            }
+    
+            .googlelg {
+                border: none;
+                background: none;
+                background-color: #e5e5e5;
+                color:black;
+            }
+    
+            a {
+                color:#231F20;
+            }
+    
+            a:hover {
+                color: #fca311;
+            }
+            
+            .gfavicon {
+                height: 24px;
+                width: 24px;
+            }
+            
+            @media (max-width: 600px) {
+                
+                a {
+                    font-size: 90%;
+                }
+                
+                h1 {
+                    font-size: 200%;
+                }
+                
+                h2 {
+                    font-size: 150%;
+                }
+
+                .access h1 {
+                    font-size: 100%;
+                }
+
+                .access h2 {
+                    font-size: 75%;
+                }
+
+            }
+    
+        </style>
+    </head> 
+    
+    <body>
+        <div class="jumbotron d-flex align-items-center min-vh-100">
+            <div class="container-fluid">
+                <div class="mx-auto d-block img-fluid">
+                    <img src="https://khub.clc.pshs.edu.ph/pluginfile.php/1/theme_moove/logo/1642486390/khub_header.png" title="PSHS Knowledge Hub - CLC" alt="PSHS Knowledge Hub - CLC">
+                </div>
+                <div class="row">
+                    <div class="col-xl-4 pr-xl-2 mh-100 my-auto">
+                        <div class="announce p-3 border border-bottom-0">
+                            <h2 class="text-center">School Announcements</h2>
+                            <div class="py-3">
+                                <a href="#">Campus-wide Monthly Mental Health Break (Spoiler Alert: Wala)</a>
+                            </div>
+                            <div class="py-3">
+                                <a href="#">Increase in Requirements for the Third Quarter</a>
+                            </div>
+                            <div class="py-3">
+                                <a href="#">Weekend Synchronous Sessions</a>
+                            </div>
+                            <div class="py-3">
+                                <h2 class="text-center">Site Announcements</h2>
+                            <div class="py-3">
+                                <a href="#">Recent Changes to the KHub Interface</a>
+                            </div>
+                            <div class="py-3">
+                                <a href="#">KHub Maintenance (January 28 - February 1, 2022)</a>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="EoA col p-3 text-center border border-top-0">End of Announcements</div>
+                    </div>
+                    <div class="col-xl-8 pl-xl-4 mh-100 my-auto">
+                        <div class="access p-3 border">
+                            <h1 class="text-left">Access the KHub:</h1>
+                            <br>
+                            <h2 class="text-left">If you have an account, please enter your email and password below.</h2>
+                            <br>
+                            <form action="dashboard.html">
+                                <div class="input-group mb-3">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon3">
+                                                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                                            </span>
+                                        </div>
+                                        <input type="text" class="form-control" id="email" placeholder="Username/Email" aria-describedby="basic-addon3">
+                                    </div>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon4">
+                                                <i class="fa fa-lock" aria-hidden="true"></i>
+                                            </span>
+                                        </div>
+                                        <input type="password" class="form-control" id="pwd" placeholder="Password" aria-describedby="basic-addon4">
+                                    </div>
+                                </div>
+                                <div class="form-group form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox">Remember me
+                                </label>
+                                </div>
+                                <button type="submit" class="lg btn btn-primary rounded-0 btn-lg mb-3">Log in</button>
+                            </form>
+                            <div>
+                                <a href="dashboard.html" class="googlelg btn btn-primary rounded-0 btn-lg btn-block" role="button"><img src="https://www.google.com/favicon.ico" class="gfavicon" alt="Google logo"><span>  Log in with your Google account</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

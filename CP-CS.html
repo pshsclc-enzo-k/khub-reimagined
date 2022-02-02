@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en-us">
+ <head>
+	<title>Course: Computer Science 3</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Load an icon library -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600&amp;family=Ubuntu:wght@300;500&amp;display=swap" rel="stylesheet">
+        <link rel="icon" href="https://cmc.pshs.edu.ph/images/logo-trans.png" type="image/gif" sizes="16x16">
+<style>
+            
+            body {
+                font-family: 'Ubuntu', sans-serif; 
+                background-color:#EBF2FA;
+                color:#231F20;
+                height: 100vh;
+                overflow-x: hidden;
+                padding-top: 55px;
+            }
+            
+            .navbar a {
+                float: left;
+                text-align: center;
+                padding: 10px;
+                color: #05668D;
+                text-decoration: none;
+                font-size: 25px;
+		    }
+            
+		    .navbar a:hover {
+		        color: #EBF2FA;
+		    }
+
+            .sidebar, .dropdown-item, .dropdown-menu {
+                background-color: #14213d;
+            }
+
+            .dropdown a, .sidebar a {
+                color: white;
+            }
+
+            .w-sidebar {
+                width: 300px;
+                max-width: 300px;
+            }
+
+            .row.collapse {
+                margin-left: -300px;
+                left: 0;
+                transition: margin-left .15s linear;
+            }
+
+            .row.collapse.show {
+                margin-left: 0 !important;
+            }
+
+            .row.collapsing {
+                margin-left: -200px;
+                left: -0.05%;
+                transition: all .15s linear;
+            }
+
+            .vh-100 {
+                min-height: 100vh;
+            }
+
+            @media (max-width:768px) {
+
+                .navbar-brand {
+                    display: none;
+                }
+
+                .navbar {
+                    height: 71px;
+                }
+
+                .row.collapse,
+                .row.collapsing {
+                    margin-left: 0 !important;
+                    left: 0 !important;
+                    overflow: visible;
+                }
+
+                .row > .sidebar.collapse {
+                    display: flex !important;
+                    margin-left: -100% !important;
+                    transition: all .3s linear;
+                    position: fixed;
+                    z-index: 1050;
+                    max-width: 0;
+                    min-width: 0;
+                    flex-basis: auto;
+                }
+
+                .row > .sidebar.collapse.show {
+                    margin-left: 0 !important;
+                    width: 50%;
+                    max-width: 100%;
+                    min-width: initial;
+                }
+
+                .row > .sidebar.collapsing {
+                    display: flex !important;
+                    margin-left: -10% !important;
+                    transition: all .2s linear !important;
+                    position: fixed;
+                    z-index: 1050;
+                    min-width: initial;
+                }
+            }
+			.subject {
+			width: 100%;
+			padding: 20px;
+			background-color: #E5E5E5;
+			color: black;
+			font-family: 'Ubuntu';
+		}
+		
+		.accordion {
+			background-color: #FCA311;
+			color: black;
+			cursor: pointer;
+			padding: 18px;
+			width: 100%;
+			border: none;
+			text-align: left;
+			outline: none;
+			font-size: 15px;
+			transition: 0.4s;
+			font-family: 'Ubuntu';
+		}
+		
+		.active, .accordion:hover {
+			background-color: #FBC02D;
+		}
+		
+		.accordion.active:after {
+			content: "\2212";
+		}
+
+		.accordion:after {
+			content: '\002B';
+			color: black;
+			font-weight: bold;
+			float: right;
+			margin-left: 5px;
+		}
+
+		.panel {
+			padding: 0 18px;
+			background-color: #EBF2FA;
+			max-height: 0;
+			overflow: hidden;
+			transition: max-height 0.2s ease-out;
+		}
+		
+		a{
+			color: black;
+		}
+		
+		a:hover{
+			text-decoration: none;
+			color:#FCA311;
+		}
+        </style>
+    </head>
+	<body>
+        <nav class="navbar navbar-expand navbar-light fixed-top" style="background-color:#FCA311">
+            <a data-toggle="collapse" href="#" data-target=".collapse" role="button" class="p-2 pr-3" aria-expanded="true">
+                <i class="fa fa-bars fa-lg"></i>
+            </a>
+            <a class="navbar-brand float-left" href="dashboard.html">
+                <img src="https://khub.clc.pshs.edu.ph/pluginfile.php/1/theme_moove/logo/1642486390/khub_header.png" alt="Logo" style="width:250px;">
+            </a>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                <a href="#"><i class="fa fa-fw fa-bell"></i></a>
+                </li>
+                <li class="nav-item">
+                <a href="authorpage.html"><i class="fa fa-fw fa-user"></i></a>
+                </li>
+            </ul>
+        </nav>
+        <div class="container-fluid px-0 h-100">
+            <div class="row vh-100 no-gutters d-flex h-100 position-relative collapse show">
+                <div class="col-3 p-0 mt-3 mt-lg-4 vh-100 h-100 w-sidebar navbar-collapse d-none d-md-flex sidebar collapse">
+                    <div class="sidebar position-fixed text-white h-100 w-sidebar pl-2">
+                        <div class="px-3 py-4 my-3">
+                            <h1>STUDENT INFO</h1>
+                            <img src="default-user.png" alt="default user image" class="rounded-circle mt-1 pt-3" style="width: 30%; height: 30%;">
+                            <h5 class="mt-3 mb-0">Juan Dela Cruz</h5>
+                            <h5 class="mt-2 mb-0">9 - Balingkilat</h5>
+                        </div>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="dashboard.html">Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Calendar</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Private Files</a>
+                            </li>
+                            <li class="dropdown show">
+                                <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
+                                  My courses
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                  <a class="dropdown-item" href="CP-BIO.html">Biology 1 - 9-Balingkilat</a>
+                                  <a class="dropdown-item" href="CP-CS.html">Computer Science 3 - 9-Balingkilat</a>
+                                  <a class="dropdown-item" href="CP-ENG.html">English 3 - 9-Balingkilat</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col p-3 mt-4">
+		<div class="subject">
+			<h2>Computer Science 3</h2>
+		</div>
+		<div id="FirstQuarter" class="tabcontent">
+			<h3>First Quarter</h3>
+				<button class="accordion">Introduction to Web Development</button>
+				<div class="panel">
+					<p>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=35882"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;Slide 00 - Subject Introduction</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=35883"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;Slide 01 - The Internet</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/url/view.php?id=35884"><i class="fa fa-link" aria-hidden="true">&nbsp; Recorded Discussion - The Internet</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=35885"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;Slide 02 - Privacy at Pisay</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/url/view.php?id=35886"><i class="fa fa-link" aria-hidden="true">&nbsp;Ang Napaka: Common Privacy Issues at School</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=35887"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;LG 1.0 Introduction to Web Development</i></a>
+					</P>
+				</div>
+				<button class="accordion">Basic HTML</button>
+				<div class="panel">
+					<p>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=37463"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;Slide 03 - HTML Basics</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=37464"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;Slide 04 - Text Links Images</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/url/view.php?id=37637"><i class="fa fa-link" aria-hidden="true">&nbsp;Live Discusion: Basics HTML and Text, Links, and Images</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=35889"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;LG 2.0 - 2.1 doctype, html, head, title, body, meta</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=35890"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;LG 2.0 - 2.2 div, span, ul, ol, h1 to h6</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=35891"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;LG 2.0 - 2.3 img, a, br, p Tag-specific attributes (href and src)</i></a>
+					</p>
+				</div>
+				<button class="accordion">Tables</button>
+				<div class="panel">
+					<p>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=37927"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;Slide 05 - Tables</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=37928"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;Slide 06 - DivSpan Validation Styles</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=35893"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;LG 3.0 - 3.1 table, tr, td, th, colgroup, col</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=35894"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;LG 3.0 - 3.2 Attributes specific to tables (rowspan, colspan of tdth)</i></a>
+					</p>
+				</div>
+				<button class="accordion">Best Practices for Web Design and Layout</button>
+				<div class="panel">
+					<p>
+					<a href="https://khub.clc.pshs.edu.ph/mod/url/view.php?id=38386"><i class="fa fa-link" aria-hidden="true">&nbsp;Layout and Composition</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/url/view.php?id=38387"><i class="fa fa-link" aria-hidden="true">&nbsp;Images</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/url/view.php?id=38388"><i class="fa fa-link" aria-hidden="true">&nbsp;Color for Beginners</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/url/view.php?id=38389"><i class="fa fa-link" aria-hidden="true">&nbsp;Typography</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=35896"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;LG 4.0 - 4.1 Color</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=35897"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;LG 4.0 - 4.2 Wireframes</i></a>
+					</p>
+				</div>
+				<button class="accordion">Introduction to Cascading Style Sheets</button>
+				<div class="panel">
+					<p>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=38841"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;Slide 07 - CSS</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/url/view.php?id=38840"><i class="fa fa-link" aria-hidden="true">&nbsp;Live Discussion: CSS</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/url/view.php?id=39231"><i class="fa fa-link" aria-hidden="true">&nbsp;Live Discussion: Designing for the Desktop</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=35899"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;LG 5.0 - 5.1, 5.3 Selectors and Basic Syntax</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=35900"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;LG 5.0 - 5.2 Types of CSS</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=35901"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;LG 5.0 - 5.4 Properties</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=35902"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;LG 5.0 - 5.5 All properties for front, text, background and box model</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=35903"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;LG 5.0 - 5.6a Float, Position, with, height, top, bottom, left, right (session 1 out of 4)</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=35904"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;LG 5.0 - 5.6b Float, Position, with, height, top, bottom, left, right (session 2 out of 4)</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=35905"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;LG 5.0 - 5.6c Float, Position, with, height, top, bottom, left, right (session 3 out of 4)</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=35906"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;LG 5.0 - 5.6d Float, Position, with, height, top, bottom, left, right (session 4 out of 4)</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/url/view.php?id=39574"><i class="fa fa-link" aria-hidden="true">&nbsp;Live Discussion: Using Github Pages</i></a>
+					</p>
+				</div>
+				<h3><a href="grades_compsci.html"><i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;Grades</a></h3>
+		</div>
+		<div id="SecondQuarter" class="tabcontent">
+			<h3>Second Quarter</h3>
+				<button class="accordion">HTML 5</button>
+				<div class="panel">
+					<p>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=42190"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;Slide 01 - HTML 5</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/url/view.php?id=42191"><i class="fa fa-link" aria-hidden="true">&nbsp;Live Discussion: HTML 5</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=41519"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;LG 6.1 HTML 5 (layout tags)</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=41520"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;LG 6.2 HTML 5 (multimedia)</i></a>
+					</p>
+				</div>
+				<button class="accordion">Responsive Web Design</button>
+				<div class="panel">
+					<p>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=43337"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;Slide 02 - RWD Intro</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/url/view.php?id=43341"><i class="fa fa-link" aria-hidden="true">&nbsp;Live Discussion: RWD Intro</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=43405"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;Slide 03 - Bootstrap</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/url/view.php?id=43338"><i class="fa fa-link" aria-hidden="true">&nbsp;Live Discussion: Bootstrap (Samat)</i></a><br>
+					</p>
+				</div>
+				<button class="accordion">Advanced CSS</button>
+				<div class="panel">
+					<p>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=41523"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;LG 7.1 Advanced CSS (text links, nav bars)</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=41524"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;LG 7.2 Advanced CSS (events)</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=41525"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;LG 7.3 Advanced CSS (image sprites)</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=41526"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;LG 7.4.1 Advanced CSS (transform)</i></a><br>
+					<a href="https://khub.clc.pshs.edu.ph/mod/resource/view.php?id=41527"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;LG 7.4.2 Advanced CSS (selectors)</i></a>
+					</p>
+				</div>
+		</div>
+		<div id="ThirdQuarter" class="tabcontent">
+			<h3>Third Quarter</h3>
+				<button class="accordion">Topic 1</button>
+				<div class="panel">
+					<p>NOT YET AVAILABLE</p>
+				</div>
+				<button class="accordion">Topic 2</button>
+				<div class="panel">
+					<p>NOT YET AVAILABLE</p>
+				</div>
+				<button class="accordion">Topic 3</button>
+				<div class="panel">
+					<p>NOT YET AVAILABLE</p>
+				</div>
+				<button class="accordion">Topic 4</button>
+				<div class="panel">
+					<p>NOT YET AVAILABLE</p>
+				</div>
+				<button class="accordion">Topic 5</button>
+				<div class="panel">
+					<p>NOT YET AVAILABLE</p>
+				</div>
+		</div>
+		<div id="FourthQuarter" class="tabcontent">
+			<h3>Fourth Quarter</h3>
+				<button class="accordion">Topic 1</button>
+				<div class="panel">
+					<p>NOT YET AVAILABLE</p>
+				</div>
+				<button class="accordion">Topic 2</button>
+				<div class="panel">
+					<p>NOT YET AVAILABLE</p>
+				</div>
+				<button class="accordion">Topic 3</button>
+				<div class="panel">
+					<p>NOT YET AVAILABLE</p>
+				</div>
+				<button class="accordion">Topic 4</button>
+				<div class="panel">
+					<p>NOT YET AVAILABLE</p>
+				</div>
+				<button class="accordion">Topic 5</button>
+				<div class="panel">
+					<p>NOT YET AVAILABLE</p>
+				</div>
+		</div>
+         </div></div></div>
+            <script>
+		var acc = document.getElementsByClassName("accordion");
+		for (let i = 0; i < acc.length; i++) {
+		acc[i].addEventListener("click", function() {
+		for (let j = 0; j < acc.length; j++) {
+		acc[j].classList.remove("active");
+		if(j!=i){
+        acc[j].nextElementSibling.style.maxHeight = null;
+		}
+		}
+		this.classList.add("active");
+		var panel = this.nextElementSibling;
+		if (panel.style.maxHeight){
+		panel.style.maxHeight = null;
+		} else {
+		panel.style.maxHeight = panel.scrollHeight + "px";
+		}
+		});
+		}
+		</script>
+	</body>
+</html>
