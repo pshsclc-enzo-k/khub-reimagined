@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+	<title>Course: Computer Science 3</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Load an icon library -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600&amp;family=Ubuntu:wght@300;500&amp;display=swap" rel="stylesheet">
+        <link rel="icon" href="https://cmc.pshs.edu.ph/images/logo-trans.png" type="image/gif" sizes="16x16">
+<style>
+            
+            body {
+                font-family: 'Ubuntu', sans-serif; 
+                background-color:#EBF2FA;
+                color:#231F20;
+                height: 100vh;
+                overflow-x: hidden;
+                padding-top: 55px;
+            }
+            
+            .navbar a {
+                float: left;
+                text-align: center;
+                padding: 10px;
+                color: #05668D;
+                text-decoration: none;
+                font-size: 25px;
+		    }
+            
+		    .navbar a:hover {
+		        color: #EBF2FA;
+		    }
+
+            .sidebar, .dropdown-item, .dropdown-menu {
+                background-color: #14213d;
+            }
+
+            .dropdown a, .sidebar a {
+                color: white;
+            }
+
+            .w-sidebar {
+                width: 300px;
+                max-width: 300px;
+            }
+
+            .row.collapse {
+                margin-left: -300px;
+                left: 0;
+                transition: margin-left .15s linear;
+            }
+
+            .row.collapse.show {
+                margin-left: 0 !important;
+            }
+
+            .row.collapsing {
+                margin-left: -200px;
+                left: -0.05%;
+                transition: all .15s linear;
+            }
+
+            .vh-100 {
+                min-height: 100vh;
+            }
+
+            @media (max-width:768px) {
+
+                .navbar-brand {
+                    display: none;
+                }
+
+                .navbar {
+                    height: 71px;
+                }
+
+                .row.collapse,
+                .row.collapsing {
+                    margin-left: 0 !important;
+                    left: 0 !important;
+                    overflow: visible;
+                }
+
+                .row > .sidebar.collapse {
+                    display: flex !important;
+                    margin-left: -100% !important;
+                    transition: all .3s linear;
+                    position: fixed;
+                    z-index: 1050;
+                    max-width: 0;
+                    min-width: 0;
+                    flex-basis: auto;
+                }
+
+                .row > .sidebar.collapse.show {
+                    margin-left: 0 !important;
+                    width: 50%;
+                    max-width: 100%;
+                    min-width: initial;
+                }
+
+                .row > .sidebar.collapsing {
+                    display: flex !important;
+                    margin-left: -10% !important;
+                    transition: all .2s linear !important;
+                    position: fixed;
+                    z-index: 1050;
+                    min-width: initial;
+                }
+            }
+			.subject {
+			width: 100%;
+			padding: 20px;
+			background-color: #E5E5E5;
+			color: black;
+			font-family: 'Ubuntu';
+		}
+		
+        .tab {
+			background-color: #EBF2FA;
+			float: left;
+			width: 25%;
+			height: 1000px;
+			overflow: scroll;
+		}
+
+		.tab button {
+            float: left;
+			display: block;
+			background-color: #14213D;
+			color: white;
+			border: 1px solid #14213D;
+            border-radius: 4px;
+            margin: 10px;
+			padding: 10px 14px;
+            height: 50px;
+			width: 40px;
+			border: none;
+			outline: none;
+			text-align: center;
+			cursor: pointer;
+			transition: 0.3s;
+			font-size: 12px;
+		}
+		
+		.tab button:hover {
+			background-color: black;
+		}
+		
+		.tab button.active {
+			background-color: #212930;
+		}
+		
+		.tabcontent {
+			float: left;
+			padding: 0px 12px;
+			border: 1px solid #ccc;
+			width: 75%;
+			border-left: none;
+			height: 1300px;
+			color: black;
+		}
+		
+		.subject {
+			width: 100%;
+			padding: 20px;
+			background-color: #E5E5E5;
+			color: black;
+            margin-bottom: 17px;
+			font-family: "Ubuntu", sans-serif;
+		}
+
+        .index {
+            color: white;
+            border: 1px solid #14213D;
+			background-color: #14213D;
+			font-family: 'Ubuntu', sans-serif; 
+			width: 100%;
+			height: 75px;
+            padding: 25px;
+            text-align: center;
+        }
+
+		.content{
+			background-color: #EBF2FA;
+			float: right;
+			width: 70%;
+			margin-right: 2%;
+			margin-left: 2%;
+			height: 1200px;
+			overflow: scroll;
+
+		}
+
+		.instructions {
+			color: white;
+            border: 1px solid #14213D;
+			background-color: #14213D;
+			font-family: 'Ubuntu', sans-serif; ;
+			width: 100%;
+			height: 75px;
+            padding: 25px;
+            text-align: left;
+		}
+
+		.game-quiz-container{
+            width: 100%;
+            height: 20rem;
+            background-color: #14213D;
+			color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 30px;
+			margin-top: 10px;
+		}
+
+.game-question-container{
+    width: 80%;
+    height: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+    border-radius: 25px;
+	margin-top: 10px;
+}
+
+.game-question-container h1{
+    font-size: 1.1rem;
+    text-align: center;
+    padding: 3px;
+}
+
+.game-options-container{
+    width: 80%;
+    height: 12rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 1.65vw;
+}
+
+.game-options-container span{
+    width: 45%;
+    height: 3rem;
+    border: 2px solid white;
+    border-radius: 20px;
+    overflow: hidden;
+    
+}
+span label{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s;
+    font-family: 'Ubuntu', sans-serif; 
+    color: white;
+}
+
+span label:hover{
+    -ms-transform: scale(1.12);
+    -webkit-transform: scale(1.12);
+    transform: scale(1.12);
+    color: white;
+}
+
+input[type="radio"] {
+    position: relative;
+    display: none;
+    
+}
+
+span label:hover{
+    -ms-transform: scale(1.12);
+    -webkit-transform: scale(1.12);
+    transform: scale(1.12);
+    background-color: black;
+}
+           
+        
+    </style>   
+ </head>
+	<body>
+        <nav class="navbar navbar-expand navbar-light fixed-top" style="background-color:#FCA311">
+            <a data-toggle="collapse" href="#" data-target=".collapse" role="button" class="p-2 pr-3" aria-expanded="true">
+                <i class="fa fa-bars fa-lg"></i>
+            </a>
+            <a class="navbar-brand float-left" href="dashboard.html">
+                <img src="https://khub.clc.pshs.edu.ph/pluginfile.php/1/theme_moove/logo/1642486390/khub_header.png" alt="Logo" style="width:250px;">
+            </a>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                <a href="#"><i class="fa fa-fw fa-bell"></i></a>
+                </li>
+                <li class="nav-item">
+                <a href="authorpage.html"><i class="fa fa-fw fa-user"></i></a>
+                </li>
+            </ul>
+        </nav>
+        <div class="container-fluid px-0 h-100">
+            <div class="row vh-100 no-gutters d-flex h-100 position-relative collapse show" style="">
+                <div class="col-3 p-0 mt-3 mt-lg-4 vh-100 h-100 w-sidebar navbar-collapse d-none d-md-flex sidebar collapse" style="">
+                    <div class="sidebar position-fixed text-white h-100 w-sidebar pl-2">
+                        <div class="px-3 py-4 my-3">
+                            <h1>STUDENT INFO</h1>
+                            <img src="default-user.png" alt="default user image" class="rounded-circle mt-1 pt-3" style="width: 30%; height: 30%;">
+                            <h5 class="mt-3 mb-0">Juan Dela Cruz</h5>
+                            <h5 class="mt-2 mb-0">9 - Balingkilat</h5>
+                        </div>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="dashboard.html">Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Calendar</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Private Files</a>
+                            </li>
+                            <li class="dropdown show">
+                                <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
+                                  My courses
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                  <a class="dropdown-item" href="CP-BIO.html">Biology 1 - 9-Balingkilat</a>
+                                  <a class="dropdown-item" href="CP-CS.html">Computer Science 3 - 9-Balingkilat</a>
+                                  <a class="dropdown-item" href="CP-ENG.html">English 3 - 9-Balingkilat</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col p-3 mt-4">
+                    <div class="subject">
+                        <h2>Biology 1 - Assessment 1</h2>
+                    </div>
+                    <div class="tab">
+                     <div class="index">
+                         <h5 style="font-size: 1.6vw;">Questions</h5>
+                     </div>
+                     <button class="tablinks " onclick="window.location.href='#instructions'">i.</button>
+                     <button class="tablinks " onclick="window.location.href='#1'">1</button>
+                     <button class="tablinks " onclick="window.location.href='#2'">2</button>
+                     <button class="tablinks " onclick="window.location.href='#3'">3</button>
+                     <button class="tablinks " onclick="window.location.href='#4'">4</button>
+                     <button class="tablinks " onclick="window.location.href='#5'">5</button>
+                    </div>
+             
+                    
+                    <div class="content">
+                        <div class="instructions" id="instructions">
+                            <h5 style="font-size: 1.6vw;">Instructions: Choose the option with what is being identified.</h5>
+                        </div>
+                        <div class="game-quiz-container" id="1">
+             
+                         <div class="game-question-container">
+                             <h1 id="display-question">  forms the first line of defense against damage of
+                                 the plant</h1>
+                         </div>
+             
+                         <div class="game-options-container">
+             
+                             <span>
+                                 <input type="radio" id="option-one" name="option" class="radio" value="optionA" />
+                                 <label for="option-one" class="option" id="option-one-label">Vascular tissue system</label>>
+                             </span>
+             
+             
+                             <span>
+                                 <input type="radio" id="option-two" name="option" class="radio" value="optionB" />
+                                 <label for="option-two" class="option" id="option-two-label">Meristematic tissue</label>
+                             </span>
+             
+             
+                             <span>
+                                 <input type="radio" id="option-three" name="option" class="radio" value="optionC" />
+                                 <label for="option-three" class="option" id="option-three-label">Dermal tissue system</label>
+                             </span>
+             
+             
+                             <span>
+                                 <input type="radio" id="option-four" name="option" class="radio" value="optionD" />
+                                 <label for="option-four" class="option" id="option-four-label">Ground tissue system</label>
+                             </span>
+                         </div>
+                       </div>
+                       <div class="game-quiz-container" id="2">
+             
+                         <div class="game-question-container">
+                             <h1 id="display-question-2">  provides flexible support that does not restrain growth</h1>
+                         </div>
+             
+                         <div class="game-options-container">
+             
+                             <span>
+                                 <input type="radio" id="option-one-2" name="option" class="radio" value="optionA" />
+                                 <label for="option-one" class="option" id="option-one-label-2">Parenchyma</label>>
+                             </span>
+             
+             
+                             <span>
+                                 <input type="radio" id="option-two-2" name="option" class="radio" value="optionB" />
+                                 <label for="option-two" class="option" id="option-two-label-2">Collenchyma</label>
+                             </span>
+             
+             
+                             <span>
+                                 <input type="radio" id="option-three-2" name="option" class="radio" value="optionC" />
+                                 <label for="option-three" class="option" id="option-three-label-2">Epithelial tissue</label>
+                             </span>
+             
+             
+                             <span>
+                                 <input type="radio" id="option-four-2" name="option" class="radio" value="optionD" />
+                                 <label for="option-four" class="option" id="option-four-label-2">Sclerenchyma</label>
+                             </span>
+                         </div>
+                        </div>
+                        <div class="game-quiz-container" id="3">
+             
+                         <div class="game-question-container">
+                             <h1 id="display-question-3">also known as the vascular cambium and cork cambium</h1>
+                         </div>
+             
+                         <div class="game-options-container">
+             
+                             <span>
+                                 <input type="radio" id="option-one-3" name="option" class="radio" value="optionA" />
+                                 <label for="option-one" class="option" id="option-one-label-3">Lateral maristem</label>>
+                             </span>
+             
+             
+                             <span>
+                                 <input type="radio" id="option-two-3" name="option" class="radio" value="optionB" />
+                                 <label for="option-two" class="option" id="option-two-label-3">Apical meristem</label>
+                             </span>
+             
+             
+                             <span>
+                                 <input type="radio" id="option-three-3" name="option" class="radio" value="optionC" />
+                                 <label for="option-three" class="option" id="option-three-label-3">Sclerenchyma</label>
+                             </span>
+             
+             
+                             <span>
+                                 <input type="radio" id="option-four-3" name="option" class="radio" value="optionD" />
+                                 <label for="option-four" class="option" id="option-four-label-3">Phloem</label>
+                             </span>
+                         </div>
+                        </div>
+                        <div class="game-quiz-container" id="4">
+             
+                         <div class="game-question-container">
+                             <h1 id="display-question-4"> composed of fat storage cells; facilitates energy storage and provides insulation</h1>
+                         </div>
+             
+                         <div class="game-options-container">
+             
+                             <span>
+                                 <input type="radio" id="option-one-4" name="option" class="radio" value="optionA" />
+                                 <label for="option-one" class="option" id="option-one-label-4">Fibrous</label>>
+                             </span>
+             
+             
+                             <span>
+                                 <input type="radio" id="option-two-4" name="option" class="radio" value="optionB" />
+                                 <label for="option-two" class="option" id="option-two-label-4">Areolar</label>
+                             </span>
+             
+             
+                             <span>
+                                 <input type="radio" id="option-three-4" name="option" class="radio" value="optionC" />
+                                 <label for="option-three" class="option" id="option-three-label-4">Adipose</label>
+                             </span>
+             
+             
+                             <span>
+                                 <input type="radio" id="option-four-4" name="option" class="radio" value="optionD" />
+                                 <label for="option-four" class="option" id="option-four-label-4">Bone</label>
+                             </span>
+                         </div>
+                        </div>
+                        <div class="game-quiz-container" id="5">
+             
+                         <div class="game-question-container">
+                             <h1 id="display-question-5"> located in walls of the internal organs;
+                                 responsible for involuntary movements</h1>
+                         </div>
+             
+                         <div class="game-options-container">
+             
+                             <span>
+                                 <input type="radio" id="option-one-5" name="option" class="radio" value="optionA" />
+                                 <label for="option-one" class="option" id="option-one-label-5">Smooth</label>>
+                             </span>
+             
+             
+                             <span>
+                                 <input type="radio" id="option-two-5" name="option" class="radio" value="optionB" />
+                                 <label for="option-two" class="option" id="option-two-label-5">Cardiac</label>
+                             </span>
+             
+             
+                             <span>
+                                 <input type="radio" id="option-three-5" name="option" class="radio" value="optionC" />
+                                 <label for="option-three" class="option" id="option-three-label-5">Skeletal</label>
+                             </span>
+             
+             
+                             <span>
+                                 <input type="radio" id="option-four-5" name="option" class="radio" value="optionD" />
+                                  <label for="option-four" class="option" id="option-four-label-5">None of the above</label>
+                             </span>
+                         </div>
+                        </div>
+                     </div>
+
+         </div></div></div>
+            <script>
+		var acc = document.getElementsByClassName("accordion");
+		for (let i = 0; i < acc.length; i++) {
+		acc[i].addEventListener("click", function() {
+		for (let j = 0; j < acc.length; j++) {
+		acc[j].classList.remove("active");
+		if(j!=i){
+        acc[j].nextElementSibling.style.maxHeight = null;
+		}
+		}
+		this.classList.add("active");
+		var panel = this.nextElementSibling;
+		if (panel.style.maxHeight){
+		panel.style.maxHeight = null;
+		} else {
+		panel.style.maxHeight = panel.scrollHeight + "px";
+		}
+		});
+		}
+		</script>
+	</body>
+</html>
